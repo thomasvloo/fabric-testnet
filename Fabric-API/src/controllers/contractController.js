@@ -11,47 +11,58 @@ const {
 } = require("../scripts/chaincodeFunctions");
 
 const initializeLedger = asyncHandler(async (req, res) => {
-    await initLedger();
-    res.status(200);
+    const result = await initLedger();
+    res.status(200).json(result);
 });
 
 const retrieveAllAssets = asyncHandler(async (req, res) => {
-    await getAllAssets();
-    res.status(200);
+    const result = await getAllAssets();
+    res.status(200).json(result);
 });
 
 const createAnAsset = asyncHandler(async (req, res) => {
     const { assetID, color, size, owner, appraisedValue } = req.body;
-    await createAsset(assetID, color, size, owner, appraisedValue);
-    res.status(200);
+    const result = await createAsset(
+        assetID,
+        color,
+        size,
+        owner,
+        appraisedValue
+    );
+    res.status(200).json(result);
 });
 
 const readAnAsset = asyncHandler(async (req, res) => {
     const { assetID } = req.body;
-    await readAsset(assetID);
-    res.status(200);
+    const result = await readAsset(assetID);
+    res.status(200).json(result);
 });
 
 const checkAssetExists = asyncHandler(async (req, res) => {
     const { assetID } = req.body;
-    await assetExists(assetID);
-    res.status(200);
+    const result = await assetExists(assetID);
+    res.status(200).json(result);
 });
 
 const updateAnAsset = asyncHandler(async (req, res) => {
     const { assetID, color, size, owner, appraisedValue } = req.body;
-    await updateAsset(assetID, color, size, owner, appraisedValue);
-    res.status(200);
+    const result = await updateAsset(
+        assetID,
+        color,
+        size,
+        owner,
+        appraisedValue
+    );
+    res.status(200).json(result);
 });
 
 const transferAnAsset = asyncHandler(async (req, res) => {
     const { assetID, newOwner } = req.body;
-    await transferAsset(assetID, newOwner);
-    res.status(200);
+    const result = await transferAsset(assetID, newOwner);
+    res.status(200).json(result);
 });
 
 module.exports = {
-    helloworld,
     initializeLedger,
     retrieveAllAssets,
     createAnAsset,

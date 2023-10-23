@@ -13,6 +13,7 @@ A NodeJs & Express backend server to interact with a Hyperledger Fabric test net
 ## Install Fabric Docker Container images & Binaries
 
 run the following command to install the Hyperledger Fabric Docker container images and binaries:
+
 `./install-fabric docker binary`
 
 ## Start up the Fabric test net

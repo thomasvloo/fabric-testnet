@@ -8,11 +8,9 @@ async function initLedger() {
     console.log(
         "\n--> Submit Transaction: InitLedger, function creates the initial set of assets on the ledger"
     );
-    const result = await networkManager.contract.submitTransaction(
-        "InitLedger"
-    );
+    await networkManager.contract.submitTransaction("InitLedger");
     console.log("*** Result: committed");
-    return prettyJSONString(result.toString());
+    return "Result Committed, Ledger has been initialized with sample assets.";
 }
 
 async function getAllAssets() {
@@ -23,7 +21,7 @@ async function getAllAssets() {
         "GetAllAssets"
     );
     console.log(`*** Result: ${prettyJSONString(result.toString())}`);
-    return prettyJSONString(result.toString());
+    return result.toString();
 }
 
 async function createAsset(assetID, color, size, owner, appraisedValue) {
@@ -42,7 +40,7 @@ async function createAsset(assetID, color, size, owner, appraisedValue) {
     if (`${result}` !== "") {
         console.log(`*** Result: ${prettyJSONString(result.toString())}`);
     }
-    return prettyJSONString(result.toString());
+    return result.toString();
 }
 
 async function readAsset(assetID) {
@@ -54,7 +52,7 @@ async function readAsset(assetID) {
         assetID
     );
     console.log(`*** Result: ${prettyJSONString(result.toString())}`);
-    return prettyJSONString(result.toString());
+    return result.toString();
 }
 
 async function assetExists(assetID) {
@@ -66,7 +64,7 @@ async function assetExists(assetID) {
         "asset1"
     );
     console.log(`*** Result: ${prettyJSONString(result.toString())}`);
-    return prettyJSONString(result.toString());
+    return result.toString();
 }
 
 async function updateAsset(assetID, color, size, owner, appraisedValue) {
@@ -82,7 +80,7 @@ async function updateAsset(assetID, color, size, owner, appraisedValue) {
         appraisedValue
     );
     console.log("*** Result: committed");
-    return prettyJSONString(result.toString());
+    return result.toString();
 }
 
 async function transferAsset(assetID, newOwner) {
@@ -95,7 +93,7 @@ async function transferAsset(assetID, newOwner) {
         newOwner
     );
     console.log("*** Result: committed");
-    return prettyJSONString(result.toString());
+    return result.toString();
 }
 // pre-requisites:
 // - fabric-sample two organization test-network setup with two peers, ordering service,

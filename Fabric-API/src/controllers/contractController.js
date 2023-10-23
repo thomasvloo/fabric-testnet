@@ -17,7 +17,7 @@ const initializeLedger = asyncHandler(async (req, res) => {
 
 const retrieveAllAssets = asyncHandler(async (req, res) => {
     const result = await getAllAssets();
-    res.status(200).json(result);
+    res.status(200).json(JSON.parse(result));
 });
 
 const createAnAsset = asyncHandler(async (req, res) => {
@@ -29,19 +29,19 @@ const createAnAsset = asyncHandler(async (req, res) => {
         owner,
         appraisedValue
     );
-    res.status(200).json(result);
+    res.status(200).json(JSON.parse(result));
 });
 
 const readAnAsset = asyncHandler(async (req, res) => {
     const { assetID } = req.body;
     const result = await readAsset(assetID);
-    res.status(200).json(result);
+    res.status(200).json(JSON.parse(result));
 });
 
 const checkAssetExists = asyncHandler(async (req, res) => {
     const { assetID } = req.body;
     const result = await assetExists(assetID);
-    res.status(200).json(result);
+    res.status(200).json(JSON.parse(result));
 });
 
 const updateAnAsset = asyncHandler(async (req, res) => {
@@ -53,13 +53,13 @@ const updateAnAsset = asyncHandler(async (req, res) => {
         owner,
         appraisedValue
     );
-    res.status(200).json(result);
+    res.status(200).json(JSON.parse(result));
 });
 
 const transferAnAsset = asyncHandler(async (req, res) => {
     const { assetID, newOwner } = req.body;
     const result = await transferAsset(assetID, newOwner);
-    res.status(200).json(result);
+    res.status(200).json(JSON.parse(result));
 });
 
 module.exports = {

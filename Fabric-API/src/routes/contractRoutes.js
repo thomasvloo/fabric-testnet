@@ -18,7 +18,8 @@ router.get("/checkAssetExists", checkAssetExists);
 
 router.post("/initLedger", initializeLedger);
 router.post("/createAsset", createAnAsset);
-router.post("/updateAsset", updateAnAsset);
-router.post("transferAsset", transferAnAsset);
+
+router.put("/updateAsset", updateAnAsset);
+router.put("/transferAsset", transferAnAsset);
 
 module.exports = router;

@@ -28,7 +28,7 @@ async function createAsset(assetID, color, size, owner, appraisedValue) {
     console.log(
         "\n--> Submit Transaction: CreateAsset, creates new asset with ID, color, owner, size, and appraisedValue arguments"
     );
-    const result = await networkManager.contract.submitTransaction(
+    await networkManager.contract.submitTransaction(
         "CreateAsset",
         assetID,
         color,
@@ -37,6 +37,10 @@ async function createAsset(assetID, color, size, owner, appraisedValue) {
         appraisedValue
     );
     console.log("*** Result: committed");
+    const result = await networkManager.contract.evaluateTransaction(
+        "ReadAsset",
+        assetID
+    );
     if (`${result}` !== "") {
         console.log(`*** Result: ${prettyJSONString(result.toString())}`);
     }
@@ -61,17 +65,15 @@ async function assetExists(assetID) {
     );
     const result = await networkManager.contract.evaluateTransaction(
         "AssetExists",
-        "asset1"
+        assetID
     );
     console.log(`*** Result: ${prettyJSONString(result.toString())}`);
     return result.toString();
 }
 
 async function updateAsset(assetID, color, size, owner, appraisedValue) {
-    console.log(
-        "\n--> Submit Transaction: UpdateAsset asset1, change the appraisedValue to 350"
-    );
-    const result = await networkManager.contract.submitTransaction(
+    console.log(`\n--> Submit Transaction: UpdateAsset ${assetID}`);
+    await networkManager.contract.submitTransaction(
         "UpdateAsset",
         assetID,
         color,
@@ -79,20 +81,28 @@ async function updateAsset(assetID, color, size, owner, appraisedValue) {
         owner,
         appraisedValue
     );
-    console.log("*** Result: committed");
+    const result = await networkManager.contract.evaluateTransaction(
+        "ReadAsset",
+        assetID
+    );
+    console.log(`*** Result: ${prettyJSONString(result.toString())}`);
     return result.toString();
 }
 
 async function transferAsset(assetID, newOwner) {
     console.log(
-        "\n--> Submit Transaction: TransferAsset asset1, transfer to new owner of Tom"
+        `\n--> Submit Transaction: TransferAsset ${assetID}, transfer to new owner of ${newOwner}`
     );
-    const result = await networkManager.contract.submitTransaction(
+    await networkManager.contract.submitTransaction(
         "TransferAsset",
         assetID,
         newOwner
     );
-    console.log("*** Result: committed");
+    const result = await networkManager.contract.evaluateTransaction(
+        "ReadAsset",
+        assetID
+    );
+    console.log(`*** Result: ${prettyJSONString(result.toString())}`);
     return result.toString();
 }
 // pre-requisites:

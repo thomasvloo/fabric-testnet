@@ -30,6 +30,10 @@ The following deploy command will package, install, approve, and commit the java
 
 `./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-javascript/ -ccl javascript`
 
+To stop the network and cleanup run:
+
+`./network.sh down`
+
 ## Start the NodeJs & Express Server
 
 Once the Hyperledger Fabric test network is up and running, open a new terminal and cd into the Fabric-API folder
@@ -43,3 +47,5 @@ Enter the following command to install the necessary dependencies using Yarn pac
 Enter the following command to start the server (port 3000)
 
 `yarn start`
+
+To stop the server press `CTRL+C`

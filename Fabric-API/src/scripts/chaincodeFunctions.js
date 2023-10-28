@@ -1,4 +1,5 @@
 const networkManager = require("./networkManager.js");
+const fs = require("fs");
 
 function prettyJSONString(inputString) {
     return JSON.stringify(JSON.parse(inputString), null, 2);
@@ -105,6 +106,41 @@ async function transferAsset(assetID, newOwner) {
     console.log(`*** Result: ${prettyJSONString(result.toString())}`);
     return result.toString();
 }
+
+function convertToCSV(objArray) {
+    const array =
+        typeof objArray !== "object" ? JSON.parse(objArray) : objArray;
+    let header = Object.keys(array[0]).join(",") + "\r\n";
+    let str = array.reduce((acc, row) => {
+        let rowData = Object.values(row).join(",") + "\r\n";
+        return acc + rowData;
+    }, header);
+    return str;
+}
+
+function jsonToCSVAndDownload(jsonData, fileName = "./ledger.csv") {
+    const csv = convertToCSV(jsonData);
+    fs.writeFile(fileName, csv, "utf8", function (err) {
+        if (err) {
+            console.log(
+                "Some error occurred - file either not saved or corrupted file saved.",
+                err
+            );
+        } else {
+            console.log("It's saved!");
+        }
+    });
+}
+
+async function exportLedgerToCSV() {
+    const result = await networkManager.contract.evaluateTransaction(
+        "GetAllAssets"
+    );
+    console.log(`*** Result: ${prettyJSONString(result.toString())}`);
+    jsonToCSVAndDownload(result.toString());
+
+    return result.toString();
+}
 // pre-requisites:
 // - fabric-sample two organization test-network setup with two peers, ordering service,
 //   and 2 certificate authorities
@@ -152,4 +188,5 @@ module.exports = {
     assetExists,
     updateAsset,
     transferAsset,
+    exportLedgerToCSV,
 };

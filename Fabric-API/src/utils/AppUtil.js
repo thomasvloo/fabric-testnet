@@ -9,6 +9,12 @@
 const fs = require("fs");
 const path = require("path");
 
+/**
+ * Builds and returns the connection profile for Org1 from a configuration file.
+ * This configuration profile is used to connect to the Hyperledger Fabric network as Org1.
+ * @returns {Object} The connection profile object for Org1.
+ * @throws {Error} If the configuration file does not exist.
+ */
 exports.buildCCPOrg1 = () => {
     // load the common connection configuration file
     const ccpPath = path.resolve(
@@ -36,6 +42,12 @@ exports.buildCCPOrg1 = () => {
     return ccp;
 };
 
+/**
+ * Builds and returns the connection profile for Org2 from a configuration file.
+ * This configuration profile is used to connect to the Hyperledger Fabric network as Org2.
+ * @returns {Object} The connection profile object for Org2.
+ * @throws {Error} If the configuration file does not exist.
+ */
 exports.buildCCPOrg2 = () => {
     // load the common connection configuration file
     const ccpPath = path.resolve(
@@ -63,6 +75,12 @@ exports.buildCCPOrg2 = () => {
     return ccp;
 };
 
+/**
+ * Builds a wallet for managing identities, either in the file system or in memory.
+ * @param {Wallets} Wallets - The Wallets class from Fabric SDK.
+ * @param {string} walletPath - The file system path to store the wallet. If not provided, an in-memory wallet is used.
+ * @returns {Promise<Wallet>} A promise that resolves to the wallet object.
+ */
 exports.buildWallet = async (Wallets, walletPath) => {
     // Create a new  wallet : Note that wallet is for managing identities.
     let wallet;
@@ -77,6 +95,11 @@ exports.buildWallet = async (Wallets, walletPath) => {
     return wallet;
 };
 
+/**
+ * Formats a JSON string to be more human-readable.
+ * @param {string} inputString - The JSON string to format.
+ * @returns {string} The formatted JSON string or the original input string if it's falsy.
+ */
 exports.prettyJSONString = (inputString) => {
     if (inputString) {
         return JSON.stringify(JSON.parse(inputString), null, 2);

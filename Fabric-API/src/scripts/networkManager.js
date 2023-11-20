@@ -7,14 +7,11 @@ const {
     buildCAClient,
     registerAndEnrollUser,
     enrollAdmin,
-} = require("../../../fabric-samples/test-application/javascript/CAUtil");
-const {
-    buildCCPOrg1,
-    buildWallet,
-} = require("../../../fabric-samples/test-application/javascript/AppUtil.js");
+} = require("../utils/CAUtil");
+const { buildCCPOrg1, buildWallet } = require("../utils/AppUtil");
 
 const channelName = process.env.CHANNEL_NAME || "mychannel";
-const chaincodeName = process.env.CHAINCODE_NAME || "basic";
+const chaincodeName = process.env.CHAINCODE_NAME || "logger";
 
 const mspOrg1 = "Org1MSP";
 const walletPath = path.join(__dirname, "wallet");

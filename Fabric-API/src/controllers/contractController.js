@@ -1,3 +1,4 @@
+// ********** Imports **********
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const {
@@ -8,6 +9,7 @@ const {
     exportLedgerToCSV,
 } = require("../scripts/chaincodeFunctions");
 
+// ********** Functions **********
 /**
  * Request Type: POST
  * Request Path: /contract/initLedger
@@ -67,6 +69,7 @@ const saveledger = asyncHandler(async (req, res) => {
     res.status(200).send("Ledger saved to ledger.csv");
 });
 
+// ********** Exports **********
 module.exports = {
     initializeLedger,
     retrieveAllAssets,

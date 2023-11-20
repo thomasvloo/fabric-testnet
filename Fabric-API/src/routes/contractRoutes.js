@@ -1,3 +1,4 @@
+// ********** Imports **********
 const express = require("express");
 
 const {
@@ -8,6 +9,7 @@ const {
     saveledger,
 } = require("../controllers/contractController");
 
+// ********** Routes **********
 const router = express.Router();
 
 // GET Routes
@@ -19,4 +21,5 @@ router.get("/saveLedger", saveledger);
 router.post("/initLedger", initializeLedger);
 router.post("/createAsset", createAnAsset);
 
+// ********** Exports **********
 module.exports = router;

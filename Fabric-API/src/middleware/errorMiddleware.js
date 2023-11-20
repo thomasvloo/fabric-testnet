@@ -1,5 +1,7 @@
+// ********** Imports **********
 const express = require("express");
 
+// ********** Functions **********
 /**
  * Error handling middleware for Express applications.
  * This middleware is used to catch errors in the application and send a uniform error response.
@@ -20,6 +22,7 @@ const errorHandler = (err, req, res, next) => {
     });
 };
 
+// ********** Exports **********
 module.exports = {
     errorHandler,
 };

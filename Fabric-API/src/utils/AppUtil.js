@@ -5,10 +5,11 @@
  */
 
 "use strict";
-
+// ********** Imports **********
 const fs = require("fs");
 const path = require("path");
 
+// ********** Functions **********
 /**
  * Builds and returns the connection profile for Org1 from a configuration file.
  * This configuration profile is used to connect to the Hyperledger Fabric network as Org1.

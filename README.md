@@ -28,7 +28,7 @@ Start the two organization test network, setup with 2 peers, ordering service, a
 
 The following deploy command will package, install, approve, and commit the javascript chaincode, all the actions it takes to deploy a chaincode to a channel:
 
-`./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-javascript/ -ccl javascript`
+`./network.sh deployCC -ccn logger -ccp ../asset-transfer-basic/log-chaincode-javascript/ -ccl javascript`
 
 To stop the network and cleanup run:
 

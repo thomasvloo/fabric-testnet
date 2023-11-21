@@ -1,4 +1,4 @@
-Fabric-API/node_modules/
-Fabric-API/.env
-Fabric-API/yarn-error.log
-Fabric-API/src/scripts/wallet
+fabric-API/node_modules/
+fabric-API/.env
+fabric-API/yarn-error.log
+fabric-API/src/scripts/wallet

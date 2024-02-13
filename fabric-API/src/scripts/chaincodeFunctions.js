@@ -63,13 +63,7 @@ async function createAsset(params) {
         JSON.stringify(params)
     );
     console.log("*** Result: committed");
-    const result = await networkManager.contract.evaluateTransaction(
-        "ReadAsset",
-        params.eventId
-    );
-    if (`${result}` !== "") {
-        console.log(`*** Result: ${prettyJSONString(result.toString())}`);
-    }
+    const result = `event ${eventId} successfully committed.`;
     return result.toString();
 }
 

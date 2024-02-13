@@ -33,6 +33,17 @@ const retrieveAllAssets = asyncHandler(async (req, res) => {
 });
 
 /**
+ * Request Type: GET
+ * Request Path: /contract/getNumberOfAssets
+ * Request parameters: -
+ * Description: Fetches and returns the number of assets currently in the ledger.
+ */
+const getNumberOfAssets = asyncHandler(async (req, res) => {
+    const result = await getAllAssets();
+    res.status(200).json(JSON.parse(result).length);
+});
+
+/**
  * Request Type: POST
  * Request Path: /contract/createAsset
  * Request parameters: The log event to be stored on-chain in the request body
@@ -43,7 +54,7 @@ const createAnAsset = asyncHandler(async (req, res) => {
     const { eventId } = req.body;
     console.log(eventId);
     const result = await createAsset(req.body);
-    res.status(200).json(JSON.parse(result));
+    res.status(200).json(result);
 });
 
 /**
@@ -73,6 +84,7 @@ const saveledger = asyncHandler(async (req, res) => {
 module.exports = {
     initializeLedger,
     retrieveAllAssets,
+    getNumberOfAssets,
     createAnAsset,
     checkAssetExists,
     saveledger,

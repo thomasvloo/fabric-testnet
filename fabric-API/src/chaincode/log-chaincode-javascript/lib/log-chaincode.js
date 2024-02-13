@@ -136,10 +136,7 @@ class ChaincodeLog extends Contract {
 
     for (const event of events) {
       event.docType = "event";
-      await ctx.stub.putState(
-        event.eventId,
-        Buffer.from(stringify(sortKeysRecursive(event)))
-      );
+      await ctx.stub.putState(event.eventId, Buffer.from(stringify(event)));
     }
   }
 
@@ -154,10 +151,7 @@ class ChaincodeLog extends Contract {
     if (exists) {
       throw new Error(`The event log ${eventId} already exists`);
     }
-    await ctx.stub.putState(
-      eventId,
-      Buffer.from(stringify(sortKeysRecursive(params)))
-    );
+    await ctx.stub.putState(eventId, Buffer.from(stringify(params)));
     return JSON.stringify(params);
   }
 

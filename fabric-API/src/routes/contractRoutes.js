@@ -4,6 +4,7 @@ const express = require("express");
 const {
     initializeLedger,
     retrieveAllAssets,
+    getNumberOfAssets,
     createAnAsset,
     checkAssetExists,
     saveledger,
@@ -14,6 +15,7 @@ const router = express.Router();
 
 // GET Routes
 router.get("/getAllAssets", retrieveAllAssets);
+router.get("/getNumberOfAssets", getNumberOfAssets);
 router.get("/checkAssetExists", checkAssetExists);
 router.get("/saveLedger", saveledger);
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { errorHandler } = require("./middleware/errorMiddleware.js");
-const networkManager = require("./scripts/networkManager.js");
+const networkManager = require("./services/networkManager.js");
 
 const app = express();
 const port = 3000;

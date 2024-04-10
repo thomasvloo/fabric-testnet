@@ -37,9 +37,9 @@ To stop the network and cleanup run:
 
 ## Start the NodeJs & Express Server
 
-Once the Hyperledger Fabric test network is up and running, open a new terminal and cd into the Fabric-API folder
+Once the Hyperledger Fabric test network is up and running, open a new terminal and cd into the fabric-API folder
 
-`cd Fabric-API`
+`cd fabric-API`
 
 Enter the following command to install the necessary dependencies using Yarn package manager:
 

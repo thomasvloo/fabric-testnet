@@ -1,5 +1,5 @@
 // ********** Imports **********
-const networkManager = require("./networkManager.js");
+const networkManager = require("../services/networkManager.js");
 const fs = require("fs");
 
 // ********** Functions **********

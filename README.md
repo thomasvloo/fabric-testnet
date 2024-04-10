@@ -2,6 +2,8 @@
 
 A NodeJs & Express backend server to interact with a Hyperledger Fabric test network. This project was created as part of a Master's Thesis at the Technical University of Munich.
 
+**NOTE:** This implementation makes use of the Hyperledger Fabric test network, for an in depth look into this test network, please refer to the official [documentation](https://hyperledger-fabric.readthedocs.io/en/release-2.5/test_network.html). A large portion of the contents of the test network were removed as they were not deemed necessary for the purpose of this thesis.
+
 ## Prerequisite software
 
 - Git
@@ -21,7 +23,7 @@ Open a terminal and cd into the fabric-samples/test-network directory:
 
 `cd fabric-samples/test-network`
 
-Start the two organization test network, setup with 2 peers, ordering service, and 2 certificate authorities:
+Start the two organization test network, setup with 2 peers, an ordering service, and 2 certificate authorities:
 
 `./network.sh up createChannel -ca`
 
@@ -92,6 +94,7 @@ To stop the server press `CTRL+C`
 - The API uses standard HTTP response codes to indicate the success or failure of requests.
 - Error handling is implemented globally to ensure consistent error responses across all endpoints.
 - For `POST` requests, ensure the `Content-Type` header is set to `application/json` and the body contains valid JSON corresponding to the asset schema expected by the chaincode.
+- When the server is first initiated, a "wallet" folder is created, containing the cryptographic material for the sample users created to authenticate the connection to the test network the application. This "wallet" folder (`Fabric/fabric-API/src/services/wallet/`) must be deleted when the network is shut down and cleaned using `./network.sh down`, before being able to start the server again.
 
 ## Project Structure
 
